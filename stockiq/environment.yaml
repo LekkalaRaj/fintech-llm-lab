@@ -1,0 +1,39 @@
+name: stockiq
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Core Python
+  - python=3.10
+
+  # Web App
+  - streamlit>=1.38
+  - requests>=2.31
+
+  # Data Utilities (optional but handy for future extensions)
+  - pandas>=2.2
+  - numpy>=1.26
+
+  # Logging & Debugging
+  - rich>=13.7
+
+  # Environment Variable Management
+  - python-dotenv>=1.0
+
+  # Testing & Linting
+  - pytest>=8.0
+  - black>=24.4
+  - flake8>=7.1
+
+  # Optional Visualization (future extensions)
+  - matplotlib>=3.9
+
+  # To ensure JSON/YAML utilities
+  - pyyaml>=6.0
+
+  # pip section (for libraries only available via pip)
+  - pip
+  - pip:
+      - google-genai
+      - streamlit-extras>=0.5.0
+      - yfinance
