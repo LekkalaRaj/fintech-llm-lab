@@ -46,3 +46,24 @@ A clean, responsive multi-tab dashboard for intuitive navigation across:
 
 ## 🚀 Vision
 StockIQ aims to bridge **quantitative** and **qualitative** investing — empowering retail and institutional users to make smarter, LLM-informed decisions in real time.
+
+
+## 📸 Screenshots
+
+Below are screenshots demonstrating the application's interface and its output.
+
+***
+
+### Financial Deep Dive (LLM)
+![Financial Deep Dive](<images/Financial Deep Dive.png>)
+![Detailed Written Analysis](<images/Detailed Written Analysis.png>)
+
+### Valuation & Quality (YF)
+![valuation & Quality](<images/valuation & Quality.png>)
+
+### Technical & Trend (YF)
+![Technical Trend](<images/Technical Trend.png>)
+
+### Management Tone & News (LLM)
+![Management Tone and News (LLM)](<images/Management Tone and News (LLM).png>)
+![Real Time News](<images/Real Time News.png>)

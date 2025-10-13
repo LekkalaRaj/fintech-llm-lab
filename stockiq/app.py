@@ -202,16 +202,6 @@ def render_technical_tab(ticker_symbol: str):
     if tech_df.empty:
         st.error(f"Could not fetch historical price data for {ticker_symbol} from Yahoo Finance.")
         return
-        
-    # Drop rows where SMAs/RSI are NaN due to insufficient history (start of the DataFrame)
-    #tech_df = tech_df.dropna(subset=['SMA_50', 'SMA_200', 'RSI'])
-    # required_cols = ['SMA_50', 'SMA_200', 'RSI']
-    # existing_cols = [col for col in required_cols if col in tech_df.columns]
-
-    # if not existing_cols:
-    #     st.warning("Technical indicators not available for this ticker yet.")
-
-    # tech_df = tech_df.dropna(subset=existing_cols)
     
     # 1. Price and Volume Chart
     st.markdown("### 📈 Price and Moving Averages")
@@ -226,18 +216,18 @@ def render_technical_tab(ticker_symbol: str):
     col2.metric("50-Day SMA", f"₹{sma_50:,.2f}", delta=f"{current_close - sma_50:,.2f}", delta_color="normal")
     col3.metric("200-Day SMA", f"₹{sma_200:,.2f}", delta=f"{current_close - sma_200:,.2f}", delta_color="normal")
 
-    tech_df = tech_df.reset_index() 
-    
     # Altair Chart for Price and SMAs
+    tech_df.columns.name = None
+
     price_chart = alt.Chart(tech_df.reset_index()).transform_fold(
-        ['Close', 'SMA_50', 'SMA_200'],
-        as_=['Metric', 'Value']
-    ).mark_line().encode(
-        x=alt.X('Date:T', title="Date"),
-        y=alt.Y('Value:Q', title="Price (₹)"),
-        color=alt.Color('Metric:N', scale=alt.Scale(range=['black', PRIMARY_COLOR, SECONDARY_COLOR])),
-        tooltip=['Date', 'Value', 'Metric']
-    ).properties(height=400)
+            ['Close', 'SMA_50', 'SMA_200'],
+            as_=['Metric', 'Value']
+        ).mark_line().encode(
+            x=alt.X('Date:T', title="Date"),
+            y=alt.Y('Value:Q', title="Price (₹)"),
+            color=alt.Color('Metric:N', scale=alt.Scale(range=['green', PRIMARY_COLOR, SECONDARY_COLOR])),
+            tooltip=['Date:T', 'Metric:N', alt.Tooltip('Value:Q', format=".2f")]
+        ).properties(height=400)
     
     st.altair_chart(price_chart, use_container_width=True)
     

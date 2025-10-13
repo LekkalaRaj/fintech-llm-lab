@@ -82,16 +82,29 @@ def get_technical_data(ticker_symbol: str) -> pd.DataFrame:
     #start_date = end_date - timedelta(days=365)
     
     # Download data
-    df = yf.download(
+    df_multi = yf.download(
         ticker_symbol, 
         period="5y", # <-- Set period to 5 years (recommended for 200-day SMA)
         interval="1d",
         progress=False
     )
     
-    if df.empty:
+    if df_multi.empty:
         return pd.DataFrame()
-        
+    
+    # 2. Extract only the 'Price' level from the MultiIndex for the column names
+    # The column names are currently a MultiIndex: ('Close', 'RELIANCE.NS')
+    # We want to keep only the first level: 'Close', 'High', 'Low', 'Open', 'Volume'
+    df_multi.columns = df_multi.columns.get_level_values(0)
+
+    # 3. (Optional but recommended) Rename the 'Adj Close' column to simply 'Close' 
+    # if you prefer a cleaner column name for the adjusted closing price
+    if 'Adj Close' in df_multi.columns:
+        df_multi = df_multi.rename(columns={'Adj Close': 'Close'})
+
+    # The resulting DataFrame now has a single-level index showing only price metrics
+    df = df_multi
+
     # Calculate SMAs
     df['SMA_50'] = df['Close'].rolling(window=50).mean().round(2)
     df['SMA_200'] = df['Close'].rolling(window=200).mean().round(2)
@@ -104,13 +117,8 @@ def get_technical_data(ticker_symbol: str) -> pd.DataFrame:
     rs = gain / loss
     df['RSI'] = 100 - (100 / (1 + rs)).round(2)
     
-    required_cols = ['SMA_50', 'SMA_200', 'RSI']
-    for col in required_cols:
-        if col not in df.columns:
-            # Create the column and fill it with NaN if it doesn't exist.
-            # This prevents the KeyError in app.py
-            df[col] = pd.NA 
-
+    # Drop rows where SMAs/RSI are NaN due to insufficient history (start of the DataFrame)
+    df = df.dropna(subset=['SMA_50', 'SMA_200', 'RSI'])
     return df
 
 def get_valuation_and_peer_data(ticker_symbol: str, peer_tickers: List[str]) -> Dict[str, Any]:
