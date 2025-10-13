@@ -54,16 +54,46 @@ Below are screenshots demonstrating the application's interface and its output.
 
 ***
 
-### Financial Deep Dive (LLM)
+## 1. Financial Deep Dive & Detailed Written Analysis
+
+| Feature                  | Description for README.md |
+|---------------------------|---------------------------|
+| **LLM-Grounded Analysis** | **Detailed Written Analysis:** Provides a qualitative, LLM-generated summary of the company's most recent quarterly financial performance and significant events, grounding data in the text. |
+| **Shareholding Pattern**  | Visualizes the Latest Quarterly Shareholding Composition (e.g., Promoter, FII, DII, Public) using a pie chart and displays the Quarter-over-Quarter (QoQ) change in shareholding in percentage points. |
+| **Quarterly Performance Chart** | Includes a bar chart visualizing QoQ Revenue and Net Profit (in Crore), crucial for tracking recent business momentum. |
+
 ![Financial Deep Dive](<images/Financial Deep Dive.png>)
 ![Detailed Written Analysis](<images/Detailed Written Analysis.png>)
 
 ### Valuation & Quality (YF)
+
+| Feature                     | Description for README.md |
+|-----------------------------|---------------------------|
+| **Intrinsic Value (DCF)**    | Performs a Discounted Cash Flow (DCF) Analysis to calculate the stock's Intrinsic Value and the associated Margin of Safety, providing key inputs (EPS, LT Growth, Discount Rate). |
+| **Relative Valuation**       | Shows Peer Comparison charts (e.g., P/E Ratio of the company vs. its peers) for quick relative valuation context. |
+| **Valuation Metrics Table**  | Presents a table of Trailing Twelve Months (TTM) valuation metrics (P/E, P/B, EV/EBITDA) for the selected stock and its key competitors. |
+| **Financial Quality Ratios** | Displays essential financial health and quality ratios (like Debt/Equity, Current Ratio, etc., although some may be N/A for non-US stocks, as previously discussed). |
+
+
 ![valuation & Quality](<images/valuation & Quality.png>)
 
 ### Technical & Trend (YF)
+
+| Feature               | Description for README.md |
+|-----------------------|---------------------------|
+| **Price & Moving Averages** | Displays the historical price trend with 50-Day and 200-Day Simple Moving Averages (SMA) overlaid in an interactive Altair chart, showing key resistance/support levels. |
+| **Momentum (RSI)**         | Calculates and plots the Relative Strength Index (RSI) (Current 14-Day value shown), with clear visualization of Oversold (<30) and Overbought (>70) zones. |
+| **Volume Analysis**        | Shows a separate bar chart for Daily Trading Volume, highlighting today's volume and recent activity. |
+
 ![Technical Trend](<images/Technical Trend.png>)
 
 ### Management Tone & News (LLM)
+| Feature                     | Description for README.md |
+|-----------------------------|---------------------------|
+| **Management Tone & Critical Risk** | LLM-Grounded Management's View: Generates a summary of Management's Tone (e.g., strategic confidence, focus on diversification) and provides evidence drawn from recent events/filings. |
+| **Risk Summary**               | Uses the LLM to identify and summarize Critical Risk Analysis and key potential headwinds for the company, providing a concise risk overview. |
+| **Real-Time News Analysis**    | Fetches and summarizes Major News Headlines, Analyst Guidance/Target Prices, and Significant Developments, all enhanced with LLM summarization. |
+| **Data Grounding**             | Features Data Traceability (Source URLs), demonstrating the LLM's grounding process by providing links to the original sources used to generate the analysis. |
+
 ![Management Tone and News (LLM)](<images/Management Tone and News (LLM).png>)
 ![Real Time News](<images/Real Time News.png>)
