@@ -141,7 +141,7 @@ def get_valuation_and_peer_data(ticker_symbol: str, peer_tickers: List[str]) -> 
     peer_metrics = []
     
     # Bulk fetch peer info
-    multi_ticker_data = yf.download(peer_tickers, period="1d", progress=False)
+    #multi_ticker_data = yf.download(peer_tickers, period="1d", progress=False)
     
     for peer_ticker in peer_tickers:
         try:

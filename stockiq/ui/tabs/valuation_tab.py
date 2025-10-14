@@ -8,7 +8,7 @@ def render_valuation_tab(ticker):
     stock_name = TICKER_TO_NAME.get(ticker, ticker)
     st.subheader(f"Valuation & Quality for {stock_name} ({ticker})")
 
-    peers = PEER_TICKERS.get(ticker, [])
+    peers = PEER_TICKERS.get(ticker, ["NIFTYBEES.NS"])
     metrics = get_valuation_and_peer_data(ticker, peers)
     dcf = calculate_dcf(ticker)
 
