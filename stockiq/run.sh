@@ -6,4 +6,4 @@ conda activate stockiq
 #export GEMINI_API_KEY="your_real_gemini_api_key"
 
 # 3️⃣ Run the dashboard
-streamlit run stock_tracker.py
+streamlit run app.py

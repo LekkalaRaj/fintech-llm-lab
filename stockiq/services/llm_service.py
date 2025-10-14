@@ -8,7 +8,7 @@ from google.genai import types
 from google.genai.errors import APIError
 from typing import Optional, Dict, Any, Tuple, List
 
-from config import MODEL_NAME, GROUNDING_TOOL
+from config.settings import MODEL_NAME, GROUNDING_TOOL
 
 @st.cache_resource(show_spinner=False)
 def initialize_client() -> Optional[genai.Client]:

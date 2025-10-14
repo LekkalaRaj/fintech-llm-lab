@@ -1,3 +1,17 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environment folders
+venv/
+.env/
+*.env
 .vscode/
 .env
-stockiq/__pycache__/**
+
+# macOS or editor system files
+.DS_Store
+
+# Streamlit and logs
+.streamlit/
+logs/
