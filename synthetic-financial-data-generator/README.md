@@ -2,19 +2,6 @@
 
 A production-ready, modular Python application for generating realistic synthetic financial datasets across multiple domains using Google Gemini LLM with Google Search validation and grounding.
 
-## 📋 Table of Contents
-
-- [Features](#features)
-- [Supported Domains](#supported-domains)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [API Reference](#api-reference)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## ✨ Features
 
 - **Multi-Domain Support**: Capital Markets, Private Equity, Venture Capital, Banking
